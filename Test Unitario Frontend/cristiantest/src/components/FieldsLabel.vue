@@ -33,7 +33,6 @@ export default {
       this.list.push(this.content);
       this.content = '';
     },
-
     buscar() {
       const vm = this;
       axios.get('http://localhost:3030/')

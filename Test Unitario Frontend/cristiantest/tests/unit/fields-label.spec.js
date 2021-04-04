@@ -50,6 +50,6 @@ describe('FieldsLabel.vue', () => {
         axios.get.mockResolvedValue(resp);
         wrapper.findAll("button").at(0).trigger("click");
         wrapper.findAll("button").at(1).trigger("click");
-        a(wrapper.vm.$data.list.length).toStrictEqual(4);
+        await expect(wrapper.vm.$data.list.length).toStrictEqual(4);
     })
 });
