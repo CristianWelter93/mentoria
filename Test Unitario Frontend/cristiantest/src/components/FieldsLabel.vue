@@ -7,7 +7,7 @@
     <br>
     <br>
     <p> {{list}}</p>
-    <button @click="buscar()"> Recuperar Lista </button>
+    <button class="recuperar" @click="buscar()"> Recuperar Lista </button>
   </div>
 </template>
 

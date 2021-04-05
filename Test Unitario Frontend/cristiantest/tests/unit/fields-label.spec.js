@@ -7,7 +7,7 @@ jest.mock('axios');
 describe('FieldsLabel.vue', () => {
     let wrapper;
 
-    it('renders without label', () => {
+    it('component should load', () => {
         wrapper = shallowMount(FieldsLabel, {});
         expect(wrapper.exists()).toBe(true);
     })
@@ -40,16 +40,14 @@ describe('FieldsLabel.vue', () => {
 
     it('should get data from back', async () => {
         const resp = ["entrada1", "entrada2", "entrada3", "entrada4"];
-        wrapper = shallowMount(FieldsLabel, {
-            data() {
-                return {
-                    content: "Entrada"
-                }
-            },
-        });
-        axios.get.mockResolvedValue(resp);
-        wrapper.findAll("button").at(0).trigger("click");
-        wrapper.findAll("button").at(1).trigger("click");
-        await expect(wrapper.vm.$data.list.length).toStrictEqual(4);
+
+        wrapper = shallowMount(FieldsLabel, {});
+
+        axios.get.mockImplementation(()=> Promise.resolve(resp));
+
+        wrapper.find(".recuperar").trigger("click");
+        wrapper.vm.$nextTick(()=>{
+            expect(wrapper.vm.$data.list.length).toStrictEqual(4);
+        })
     })
 });
