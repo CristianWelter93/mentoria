@@ -1,20 +1,16 @@
 <template>
   <div>
-    <label v-if="text"> {{text}} </label>
-    <br>
-    <input v-model="content" />
-    <button @click="adicionar()"> Adicionar </button>
-    <br>
-    <br>
-    <p> {{list}}</p>
-    <button class="recuperar" @click="buscar()"> Recuperar Lista </button>
+    <insert :text="text" @new-value="add"/>
+    <show-list :new="content"/>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import Insert from './Insert.vue';
+import ShowList from './ShowList.vue';
 
 export default {
+  components: { Insert, ShowList },
   name: 'FieldsLabel',
   props: {
     text: {
@@ -25,23 +21,12 @@ export default {
   data() {
     return {
       content: '',
-      list: [],
     };
   },
   methods: {
-    adicionar() {
-      this.list.push(this.content);
-      this.content = '';
-    },
-    buscar() {
-      const vm = this;
-      axios.get('http://localhost:3030/')
-        .then((response) => {
-          vm.list = response;
-        })
-        .catch(() => {
-          vm.list = [];
-        });
+    add(newValue) {
+      console.log('chamou o add:', newValue);
+      this.content = newValue;
     },
   },
 };
