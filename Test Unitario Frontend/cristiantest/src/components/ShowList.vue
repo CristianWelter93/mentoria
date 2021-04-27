@@ -1,8 +1,11 @@
 <template>
   <div>
     <br>
-    <p> {{list}}</p>
     <button class="recuperar" @click="buscar()"> Recuperar Lista </button>
+    <br>
+    <li v-for='item in list' :key='item' class="space-list">
+      {{ item }}
+    </li>
   </div>
 </template>
 
@@ -23,9 +26,9 @@ export default {
     };
   },
   watch: {
-      new:function(newVal) {
-        this.list.push(newVal);
-      }
+    new(newVal) {
+      this.list.push(newVal);
+    },
   },
   methods: {
     buscar() {
@@ -43,4 +46,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+
+.space-list
+  margin-top: 20px,
 </style>

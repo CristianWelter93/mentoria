@@ -25,7 +25,6 @@ export default {
   },
   methods: {
     add(newValue) {
-      console.log('chamou o add:', newValue);
       this.content = newValue;
     },
   },

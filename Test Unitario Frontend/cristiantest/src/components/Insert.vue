@@ -3,7 +3,7 @@
     <label v-if="text"> {{ text }} </label>
     <br />
     <input v-model="content" />
-    <button @click="adicionar()">Adicionar</button>
+    <button id="botao" @click="adicionar()">Adicionar</button>
     <br />
   </div>
 </template>
