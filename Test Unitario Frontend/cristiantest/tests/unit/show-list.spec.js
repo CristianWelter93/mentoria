@@ -32,4 +32,17 @@ describe('ShowList.vue', () => {
       expect(wrapper.vm.$data.list.length).toStrictEqual(4);
     });
   });
+
+  it('should call method buscar', async () => {
+    wrapper = shallowMount(ShowList, {
+    });
+    const botao = wrapper.find('.recuperar')
+
+    const spy = jest.spyOn(wrapper.vm, 'buscar');
+    
+    await botao.trigger('click');
+
+    expect(spy).toBeCalled();
+
+  });
 });
