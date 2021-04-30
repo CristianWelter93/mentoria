@@ -37,7 +37,7 @@ describe('ShowList.vue', () => {
     wrapper = shallowMount(ShowList, {
     });
     const botao = wrapper.find('.recuperar')
-
+    
     const spy = jest.spyOn(wrapper.vm, 'buscar');
     
     await botao.trigger('click');
